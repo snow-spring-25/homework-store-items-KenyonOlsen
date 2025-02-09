@@ -11,6 +11,11 @@
 <label>Shopping Cart
 </label>
 <br>
+<label>Total Cost:
+</label>
+
+<label>- @ShelfItemsList.TotalCost</label>
+<br>
 
 <button>
     <button @onclick=addApple> Add Apple To Cart</button>
@@ -33,19 +38,21 @@
     <tr>
         <td>- @storeItem.ProductType</td>
         <td>- @storeItem.Cost</td>
+        
+        
 
     </tr>
 }
-    
+
 
 
 
 @code {
     ShelfItems ShelfItemsList = new ShelfItems();
+    decimal TotalCost;
     void addApple()
     {
         ShelfItemsList.AddItem("Apple");
-
 
     }
 
