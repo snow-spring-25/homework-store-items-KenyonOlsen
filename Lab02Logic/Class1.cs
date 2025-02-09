@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Dynamic;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
@@ -6,25 +6,49 @@ using Microsoft.VisualBasic;
 
 namespace Lab02Logic;
 
-public class StoreItem
+public abstract class StoreItem
 {
-    public decimal Cost;
-    public StoreItem()
+    public decimal Cost = 5.0M;
+    public string ProductType { get; set;} 
+    public StoreItem(string Type)
     {
+        ProductType=Type;
+    }
+    public StoreItem(string Type, decimal cost): this(Type)
+    {
+        Cost = cost;
+    }
+    public static decimal GetCost(decimal c)
+    {
+        //Cost = c;
+        return c;
+    }
 
-    }
-    public static decimal GetCost()
-    {
-        return 1.2m;
-    }
-    private int itemCost = 1;
 }
 
 public class Apple : StoreItem
 {
-    public decimal Cost = GetCost();
-
+    public Apple(string Type) : base(Type)
+    {
+    }
 }
+
+public class Banana : StoreItem
+{
+
+    public Banana(string Type) : base(Type)
+    {
+    }
+}
+
+public class Orange : StoreItem
+{
+
+    public Orange(string Type, decimal Cost) : base(Type, Cost)
+    {
+    }
+}
+
 
 public class ShelfItems
 {
@@ -37,8 +61,20 @@ public class ShelfItems
     {
         if(Type=="Apple")
         {
-            Apple newApple = new Apple();
+            StoreItem newApple = new Apple("Apple");
             ShelfList.Add(newApple);
+        }
+
+        else if (Type == "Banana")
+        {
+            StoreItem newBanana = new Banana("Banana");
+            ShelfList.Add(newBanana);
+        }
+
+        else if (Type == "Orange")
+        {
+            StoreItem newOrange = new Orange("Orange",4.0m);
+            ShelfList.Add(newOrange);
         }
     }
 }
