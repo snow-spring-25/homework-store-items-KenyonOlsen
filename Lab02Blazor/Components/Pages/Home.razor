@@ -1,0 +1,46 @@
+﻿@page "/"
+@using Lab02Logic
+
+<PageTitle>Home</PageTitle>
+
+<h1>Welcome To The Store Item Manager!</h1>
+
+<h3> Store Items</h3>
+
+<br>
+<label>Shopping Cart
+</label>
+<br>
+
+<button>
+    <button @onclick=createStoreItem>Add An Employee</button>
+</button>
+
+<br>
+<label>First Name
+    <input @bind=ShelfItemsList.ShelfList />
+</label>
+
+
+
+@foreach (var storeItem in ShelfItemsList.ShelfList)
+{
+    <tr>
+
+        <td>- @storeItem.Cost</td>
+
+    </tr>
+}
+    
+
+
+
+@code {
+    ShelfItems ShelfItemsList = new ShelfItems();
+    void createStoreItem()
+    {
+        ShelfItemsList.AddItem("Apple");
+
+
+    }
+}
