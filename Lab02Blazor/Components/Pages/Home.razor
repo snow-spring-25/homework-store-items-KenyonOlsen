@@ -1,4 +1,4 @@
-﻿@page "/"
+@page "/"
 @using Lab02Logic
 
 <PageTitle>Home</PageTitle>
@@ -13,20 +13,25 @@
 <br>
 
 <button>
-    <button @onclick=createStoreItem>Add An Employee</button>
+    <button @onclick=addApple> Add Apple To Cart</button>
 </button>
 
-<br>
-<label>First Name
-    <input @bind=ShelfItemsList.ShelfList />
-</label>
+<button>
+    <button @onclick=addBanana>Add Banana To Cart</button>
+</button>
+
+<button>
+    <button @onclick=addOrange>Add Orange To Cart</button>
+</button>
+
+
 
 
 
 @foreach (var storeItem in ShelfItemsList.ShelfList)
 {
     <tr>
-
+        <td>- @storeItem.ProductType</td>
         <td>- @storeItem.Cost</td>
 
     </tr>
@@ -37,9 +42,23 @@
 
 @code {
     ShelfItems ShelfItemsList = new ShelfItems();
-    void createStoreItem()
+    void addApple()
     {
         ShelfItemsList.AddItem("Apple");
+
+
+    }
+
+    void addBanana()
+    {
+        ShelfItemsList.AddItem("Banana");
+
+
+    }
+
+    void addOrange()
+    {
+        ShelfItemsList.AddItem("Orange");
 
 
     }
