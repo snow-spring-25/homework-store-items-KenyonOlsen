@@ -52,6 +52,7 @@ public class Orange : StoreItem
 
 public class ShelfItems
 {
+    public decimal TotalCost=0;
     public ShelfItems()
     {
 
@@ -63,18 +64,21 @@ public class ShelfItems
         {
             StoreItem newApple = new Apple("Apple");
             ShelfList.Add(newApple);
+            TotalCost+=5;
         }
 
         else if (Type == "Banana")
         {
             StoreItem newBanana = new Banana("Banana");
             ShelfList.Add(newBanana);
+            TotalCost += 5;
         }
 
         else if (Type == "Orange")
         {
             StoreItem newOrange = new Orange("Orange",4.0m);
             ShelfList.Add(newOrange);
+            TotalCost += 4;
         }
     }
 }
